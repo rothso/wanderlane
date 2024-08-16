@@ -16,22 +16,18 @@ export const AvatarGroup: React.FC<Props> = ({
   users,
   borderColor,
   small = false,
-}) => {
-  const ringClass = classnames(
-    "ring-offset-0 ring-4 -ml-2 z-0",
-    colorVariants[borderColor]
-  );
-
-  return (
-    <div className="flex flex-row-reverse ml-2">
-      {users.map((user) => (
-        <Avatar
-          key={user.name}
-          user={user}
-          className={ringClass}
-          small={small}
-        />
-      ))}
-    </div>
-  );
-};
+}) => (
+  <div className="flex flex-row-reverse ml-2">
+    {users.map((user) => (
+      <Avatar
+        key={user.name}
+        user={user}
+        className={classnames(
+          "ring-offset-0 ring-4 -ml-2 z-0",
+          colorVariants[borderColor]
+        )}
+        small={small}
+      />
+    ))}
+  </div>
+);

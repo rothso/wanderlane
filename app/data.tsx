@@ -1,5 +1,10 @@
 const users: User[] = [
   {
+    name: "Ang",
+    imageUrl:
+      "https://media.discordapp.net/attachments/793693131311808543/1274053553823944764/1274042325105901578remix-1723828436427.png?ex=66c0da56&is=66bf88d6&hm=ff6a870b5ec46530f1a680121cdadeb63f39baf53cc93b77db1dcfebf9a1a72e&=&format=webp&quality=lossless&width=100&height=100",
+  },
+  {
     name: "Honya",
     imageUrl: "https://avatars.githubusercontent.com/u/30172148?v=4",
   },
@@ -57,7 +62,7 @@ const swimlanes: Swimlane[] = [
       {
         name: "Hiking Trip",
         location: "Machu Picchu, Peru",
-        date: "August",
+        date: "2025",
         description: "Honya is going backpacking through Machu Picchu! ️🦙✨",
       },
       {
@@ -71,20 +76,23 @@ const swimlanes: Swimlane[] = [
     description:
       "We know we're going somewhere, but we're still working out the dates.",
     color: "bg-indigo-500",
+    trips: [
+      {
+        name: "Universal Orlando",
+        description: "Ang's birthday party 🥳",
+        location: "Universal Orlando Resort",
+        date: "Nov 1, 2024 - Nov 2, 2024",
+        participants: users.filter((u) =>
+          ["Lili", "Roth", "Chris", "Ang"].includes(u.name)
+        ),
+      },
+    ],
   },
   {
     name: "Lodging Booked",
     description:
       "We're past the dating phase and now we're officially moving in.",
     color: "bg-sky-500",
-    trips: [
-      {
-        name: "Glamping in Yurts",
-        location: "Sky Ridge Yurts (Bryson City, NC)",
-        date: "Aug 30, 2024 - Sep 2, 2024",
-        participants: users.slice(0, 5),
-      },
-    ],
   },
   {
     name: "Planned",
@@ -92,28 +100,27 @@ const swimlanes: Swimlane[] = [
     color: "bg-emerald-500",
     trips: [
       {
-        name: "De Leon Springs",
-        location: "De Leon Springs State Park (FL)",
-        date: "July 6, 2024",
-        description: "Day trip! 🥞🏊",
+        name: "Glamping in Yurts",
+        location: "Sky Ridge Yurts (Bryson City, NC)",
+        date: "Aug 30, 2024 - Sep 2, 2024",
         participants: users,
       },
     ],
   },
-  // {
-  //   name: "Planned",
-  //   description: "We've started using Google Calendar. *shudders*",
-  //   color: "bg-emerald-500",
-  //   trips: [
-  //     {
-  //       name: "De Leon Springs",
-  //       location: "De Leon Springs State Park (FL)",
-  //       date: "July 6, 2024",
-  //       description: "Day trip! 🥞🏊",
-  //       participants: users,
-  //     },
-  //   ],
-  // },
+  {
+    name: "We Made It",
+    description: "We'll never forget those nights we spent together.",
+    color: "bg-stone-500",
+    trips: [
+      {
+        name: "De Leon Springs",
+        location: "De Leon Springs State Park (FL)",
+        date: "July 6, 2024",
+        description: "Day trip! 🥞🏊",
+        participants: users.filter((u) => !["Will", "Ang"].includes(u.name)),
+      },
+    ],
+  },
 ];
 
 const board: Board = {

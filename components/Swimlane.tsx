@@ -18,7 +18,7 @@ export const Swimlane: React.FC<Props> = ({ swimlane }) => (
           {swimlane.trips?.length ?? 0}
         </p>
       </div>
-      <p className="font-thin opacity-50">{swimlane.description}</p>
+      <p className="font-light opacity-70">{swimlane.description}</p>
     </div>
     {swimlane.trips?.map((trip) => (
       <Trip key={trip.name} trip={trip} />
