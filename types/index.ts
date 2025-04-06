@@ -11,17 +11,17 @@ type Tag = {
 type Trip = {
   name: string;
   location?: string;
-  tags?: Tag[];
+  tags: Tag[];
   date?: string;
   description?: string;
-  participants?: User[];
+  participants: User[];
 };
 
 type Swimlane = {
   name: string;
   description: string;
   color: string;
-  trips?: Trip[];
+  trips: Trip[];
 };
 
 type Board = {

@@ -8,11 +8,6 @@ const roboto = Roboto({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Trip Board",
-  description: "Our very bestest trip board",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{

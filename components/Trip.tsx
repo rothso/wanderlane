@@ -26,7 +26,7 @@ export const Trip: React.FC<Props> = ({ trip }) => (
           </div>
         )}
       </div>
-      {trip.participants?.length && (
+      {trip.participants.length > 0 && (
         <div className="flex justify-between">
           <Participants
             small

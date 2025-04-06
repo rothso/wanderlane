@@ -1,9 +1,46 @@
 import { Swimlane } from "@/components/Swimlane";
-import { getData } from "./data";
 import { AvatarGroup } from "@/components/AvatarGroup";
+import supabase from "../lib/initSupabase";
+import "../app/globals.css";
 
-export default function Home() {
-  const board = getData();
+export const metadata = {
+  title: "Trip Board",
+  description: "Our very bestest trip board",
+};
+
+export default async function Home() {
+  const { data: board, error } = await supabase
+    .from("boards")
+    .select(
+      `
+      name,
+      swimlanes (
+        name,
+        description,
+        color,
+        trips (
+          name,
+          description,
+          location,
+          date,
+          participants:users (
+            name,
+            imageUrl:image_url
+          )
+        )
+      ),
+      users (
+        name,
+        imageUrl:image_url
+      )
+    `
+    )
+    .eq("id", 1)
+    .single();
+
+  if (error) {
+    throw error;
+  }
 
   return (
     <main className="flex max-w-screen-2xl min-h-screen flex-col space-y-12 items-center mx-auto py-24">
