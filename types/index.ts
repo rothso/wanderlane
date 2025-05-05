@@ -1,30 +1,26 @@
-type User = {
+import { ColorName } from "@/constants/colors";
+
+export type User = {
   name: string;
   imageUrl: string;
 };
 
-type Tag = {
-  name: string;
-  hexColor: string;
-};
-
-type Trip = {
+export type Trip = {
   name: string;
   location?: string;
-  tags: Tag[];
   date?: string;
   description?: string;
   participants: User[];
 };
 
-type Swimlane = {
+export type Swimlane = {
   name: string;
   description: string;
-  color: string;
+  color: ColorName;
   trips: Trip[];
 };
 
-type Board = {
+export type Board = {
   name: string;
   users: User[];
   swimlanes: Swimlane[];

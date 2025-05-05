@@ -1,5 +1,6 @@
 import classnames from "classnames";
 import { Avatar } from "./Avatar";
+import { type User } from "@/types";
 
 const colorVariants = {
   midnight: "bg-midnight ring-midnight",

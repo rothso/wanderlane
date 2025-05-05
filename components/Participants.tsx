@@ -1,5 +1,6 @@
 import classnames from "classnames";
 import { AvatarGroup } from "./AvatarGroup";
+import { type User } from "@/types";
 
 const colorVariants = {
   midnight: "ring-midnight",

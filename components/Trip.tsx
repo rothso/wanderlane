@@ -1,7 +1,8 @@
 import { Participants } from "./Participants";
+import { type Trip as TripType } from "@/types";
 
 type Props = {
-  trip: Trip;
+  trip: TripType;
 };
 
 export const Trip: React.FC<Props> = ({ trip }) => (

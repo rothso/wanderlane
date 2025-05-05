@@ -2,15 +2,15 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+This project uses Supabase and Vercel. First, make sure you have the Vercel CLI installed, and pull the environment variables with:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+vercel env pull
+```
+
+Then, run the development server:
+
+```bash
 bun dev
 ```
 

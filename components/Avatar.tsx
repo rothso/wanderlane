@@ -1,4 +1,5 @@
 import classnames from "classnames";
+import { type User } from "@/types";
 
 type Props = {
   user: User;
