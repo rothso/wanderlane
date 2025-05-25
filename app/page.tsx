@@ -8,6 +8,8 @@ export const metadata = {
   description: "Our very bestest trip board",
 };
 
+export const revalidate = 0;
+
 export default async function Home() {
   const { data: board, error } = await supabase
     .from("boards")
