@@ -5,7 +5,7 @@ type Props = {
   trip: TripType;
 };
 
-export const Trip: React.FC<Props> = ({ trip }) => (
+export const Trip = ({ trip }: Props) => (
   <div className="bg-neutral-800 rounded-lg shadow-md flex flex-col space-y-4 p-7">
     <div className="flex flex-col space-y-6">
       <div className="flex flex-col space-y-3">
@@ -32,7 +32,8 @@ export const Trip: React.FC<Props> = ({ trip }) => (
           <Participants
             small
             users={trip.participants}
-            borderColor="neutral-800"
+            ringColor="neutral-800"
+            limit={4}
           />
         </div>
       )}

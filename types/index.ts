@@ -1,6 +1,7 @@
 import { ColorName } from "@/constants/colors";
 
 export type User = {
+  id: number;
   name: string;
   imageUrl: string;
 };

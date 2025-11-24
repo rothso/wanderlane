@@ -1,4 +1,4 @@
-import classnames from "classnames";
+import { cn } from "@/lib/utils";
 import { Button } from "./Button";
 import { Trip } from "./Trip";
 import { colors } from "@/constants/colors";
@@ -8,15 +8,12 @@ type Props = {
   swimlane: SwimlaneType;
 };
 
-export const Swimlane: React.FC<Props> = ({ swimlane }) => (
-  <div className="flex flex-col flex-1 space-y-6">
+export const Swimlane = ({ swimlane }: Props) => (
+  <div className="flex flex-col flex-1 min-w-[15rem] space-y-6">
     <div className="flex flex-col space-y-4">
       <div className="flex items-center space-x-2.5">
         <div
-          className={classnames(
-            "rounded-full w-2 h-2 mr-1",
-            colors[swimlane.color]
-          )}
+          className={cn("rounded-full w-2 h-2 mr-1", colors[swimlane.color])}
         />
         <p className="text-xl font-light">{swimlane.name}</p>
         <p className="text-xl font-light opacity-50">

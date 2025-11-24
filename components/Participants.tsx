@@ -1,40 +1,65 @@
-import classnames from "classnames";
-import { AvatarGroup } from "./AvatarGroup";
-import { type User } from "@/types";
+import { cn } from "@/lib/utils";
+import { Avatar } from "./Avatar";
+import { OverlapGroup } from "./OverlapGroup";
+import { User } from "@/types";
+import { UserAvatar } from "./UserAvatar";
+import { useOverflow } from "@/hooks/useOverflow";
 
-const colorVariants = {
+const ringClassName = {
   midnight: "ring-midnight",
   "neutral-800": "ring-neutral-800",
 };
 
 type Props = {
   users: User[];
-  borderColor: keyof typeof colorVariants;
-  small: boolean;
+  ringColor: keyof typeof ringClassName;
+  limit?: number;
+  small?: boolean;
 };
 
-export const Participants: React.FC<Props> = ({
+export const Participants = ({
   users,
-  borderColor,
+  ringColor,
+  limit,
   small = false,
-}) => {
-  const ringClass = classnames(
-    "ring-offset-0 ring-4 -ml-2 z-0",
-    colorVariants[borderColor]
-  );
+}: Props) => {
+  const { withinLimit, excess } = useOverflow(users, limit ?? users.length, 2);
 
   return (
-    <div className="flex flex-row-reverse">
-      <div
-        className={classnames(
-          ringClass,
-          "w-8 h-8 rounded-full bg-neutral-700 flex justify-center items-center"
-        )}
+    <OverlapGroup>
+      {withinLimit.map((user) => (
+        <UserAvatar
+          key={user.id}
+          user={user}
+          className={ringClassName[ringColor]}
+          small={small}
+        />
+      ))}
+      {excess.length > 0 && (
+        <Avatar
+          id="show-all"
+          key="show-all"
+          className={cn("bg-slate-500 font-bold", ringClassName[ringColor])}
+          small={small}
+        >
+          +{excess.length}
+        </Avatar>
+      )}
+      <Avatar
+        id="add-participant"
+        key="add-participant"
+        className={cn("bg-neutral-700", ringClassName[ringColor])}
+        small={small}
       >
-        <span className="text-neutral-500 text-lg">+</span>
-      </div>
-
-      <AvatarGroup users={users} borderColor={borderColor} small={small} />
-    </div>
+        <span
+          className={cn("text-neutral-500 font-bold", {
+            "text-xl": !small,
+            "text-lg": small,
+          })}
+        >
+          +
+        </span>
+      </Avatar>
+    </OverlapGroup>
   );
 };
